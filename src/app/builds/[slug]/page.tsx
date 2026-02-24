@@ -6,12 +6,16 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const { frontmatter, content } = getProjectBySlug(params.slug);
+export default async function ProjectPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
+  const { slug } = await params;
+  const { frontmatter, content } = getProjectBySlug(slug);
 
   return (
     <div className="space-y-10 pt-10">
-      {/* HEADER */}
       <div className="space-y-4">
         <Link
           href="/builds"
@@ -45,7 +49,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           ))}
         </div>
 
-        {/* LINKS */}
         <div className="flex gap-4 pt-2">
           {frontmatter.github && (
             <a
@@ -68,7 +71,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
-      {/* IMPACT CALLOUT */}
       {frontmatter.impact && (
         <div className="border-l-2 border-white pl-4">
           <p className="text-xs font-mono text-neutral-500 mb-1">IMPACT</p>
@@ -76,9 +78,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       )}
 
-      {/* CONTENT */}
-      <article className="prose prose-invert prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-neutral-300 prose-p:leading-relaxed prose-a:text-white prose-strong:text-white prose-code:text-neutral-300 prose-code:bg-neutral-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none">
-        {/* Simple markdown rendering - splits content into paragraphs */}
+      <article>
         {content.split('\n').map((line, i) => {
           if (line.startsWith('## ')) {
             return (

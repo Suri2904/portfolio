@@ -6,8 +6,13 @@ export function generateStaticParams() {
   return essays.map((e) => ({ slug: e.slug }));
 }
 
-export default function EssayPage({ params }: { params: { slug: string } }) {
-  const { frontmatter, content } = getEssayBySlug(params.slug);
+export default async function EssayPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
+  const { slug } = await params;
+  const { frontmatter, content } = getEssayBySlug(slug);
 
   return (
     <div className="space-y-10 pt-10">
