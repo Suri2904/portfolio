@@ -9,104 +9,140 @@ export default function Home() {
   const featured = projects.filter((p) => p.frontmatter.featured);
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-24">
+      
       {/* HERO */}
-      <section className="pt-12 space-y-6">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-          Suryansh Chandel
-        </h1>
-        <p className="text-xl text-neutral-400 max-w-xl leading-relaxed">
-          I notice broken systems and build things to fix them.
-        </p>
-        <p className="text-sm text-neutral-600 font-mono">
-          Data Analyst · Builder · NIT Warangal &apos;23
-        </p>
+      <section className="space-y-8 animate-fade-in-up">
+        
+        {/* Status badge */}
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+          </span>
+          <span className="text-[11px] font-mono text-white/30 tracking-wider">
+            Open to opportunities
+          </span>
+        </div>
+
+        <div className="space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+            <span className="gradient-text">Suryansh</span>
+            <br />
+            <span className="text-white/40">Chandel</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-white/40 max-w-lg leading-relaxed">
+            I notice broken systems and build things to fix them.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-4 text-[11px] font-mono text-white/20">
+          <span className="flex items-center gap-1.5">
+            <span className="w-3 h-[1px] bg-white/20"></span>
+            Data Analyst @ Apollo 24|7
+          </span>
+          <span className="w-1 h-1 rounded-full bg-white/10"></span>
+          <span>NIT Warangal</span>
+        </div>
       </section>
 
       {/* SIGNAL */}
-      <section className="border-l-2 border-white pl-6 space-y-3">
-        <p className="text-neutral-300 leading-relaxed">
-          By day, I reduce operational chaos at India&apos;s largest digital
-          health platform — cutting order cancellations by 30%, automating 80%
-          of reporting, and owning PAN-India programs.
-        </p>
-        <p className="text-neutral-300 leading-relaxed">
-          By night, I build tools for problems that personally annoy me.
-        </p>
-        <p className="text-sm text-neutral-600 font-mono mt-4">
-          This site is the second part.
-        </p>
+      <section className="animate-fade-in-up animate-delay-2">
+        <div className="relative pl-6">
+          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-white/30 via-white/10 to-transparent"></div>
+          
+          <div className="space-y-4">
+            <p className="text-white/50 leading-relaxed text-[15px]">
+              By day, I reduce operational chaos at India&apos;s largest digital
+              health platform — cutting order cancellations by 30%, automating 80%
+              of reporting, and owning PAN-India programs.
+            </p>
+            <p className="text-white/50 leading-relaxed text-[15px]">
+              By night, I build tools for problems that personally annoy me.
+            </p>
+          </div>
+          
+          <p className="text-[11px] font-mono text-white/15 mt-6 tracking-wider">
+            This site is the second part.
+          </p>
+        </div>
       </section>
 
       {/* FEATURED BUILDS */}
-      {featured.length > 0 && (
-        <section className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xs font-mono tracking-[0.3em] text-neutral-500 uppercase">
+      <section className="space-y-8 animate-fade-in-up animate-delay-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-[1px] bg-white/10"></div>
+            <h2 className="text-[11px] font-mono tracking-[0.3em] text-white/30 uppercase">
               Featured Builds
             </h2>
+          </div>
+          {projects.length > 0 && (
             <Link
               href="/builds"
-              className="text-xs font-mono text-neutral-600 hover:text-neutral-300 transition-colors"
+              className="text-[11px] font-mono text-white/20 hover:text-white/50 transition-colors duration-300"
             >
               View all →
             </Link>
-          </div>
+          )}
+        </div>
+
+        {featured.length > 0 ? (
           <div className="space-y-4">
             {featured.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
-        </section>
-      )}
-
-      {/* EMPTY STATE — Remove this section once you have projects */}
-      {featured.length === 0 && (
-        <section className="space-y-6">
-          <h2 className="text-xs font-mono tracking-[0.3em] text-neutral-500 uppercase">
-            Builds
-          </h2>
-          <div className="border border-dashed border-neutral-800 rounded-lg p-12 text-center">
-            <p className="text-neutral-500 font-mono text-sm">
-              First build shipping soon.
+        ) : (
+          <div className="border border-dashed border-white/[0.06] rounded-xl p-16 text-center">
+            <p className="text-white/20 font-mono text-xs tracking-wider">
+              First build shipping soon
             </p>
-            <p className="text-neutral-700 text-xs mt-2">
-              Check /now to see what I&apos;m working on.
+            <p className="text-white/10 text-[11px] mt-3 font-mono">
+              Check <Link href="/now" className="text-white/30 hover:text-white/50 transition-colors underline underline-offset-4 decoration-white/10">/now</Link> to see what I&apos;m working on
             </p>
           </div>
-        </section>
-      )}
+        )}
+      </section>
 
-      {/* STATS BAR */}
-      <section className="grid grid-cols-3 gap-4">
+      {/* NAV CARDS */}
+      <section className="grid grid-cols-3 gap-3 animate-fade-in-up animate-delay-4">
         <Link
           href="/builds"
-          className="border border-neutral-800 rounded-lg p-6 text-center hover:border-neutral-600 transition-colors"
+          className="group border border-white/[0.06] rounded-xl p-6 text-center hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-500"
         >
-          <p className="font-mono text-2xl font-bold">{projects.length}</p>
-          <p className="text-[10px] text-neutral-500 mt-1 font-mono tracking-widest">
-            BUILDS
+          <p className="font-mono text-2xl font-bold text-white/60 group-hover:text-white/90 transition-colors">
+            {projects.length}
+          </p>
+          <p className="text-[9px] text-white/20 mt-2 font-mono tracking-[0.3em] uppercase">
+            Builds
           </p>
         </Link>
         <Link
           href="/thinking"
-          className="border border-neutral-800 rounded-lg p-6 text-center hover:border-neutral-600 transition-colors"
+          className="group border border-white/[0.06] rounded-xl p-6 text-center hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-500"
         >
-          <p className="font-mono text-2xl font-bold">{essays.length}</p>
-          <p className="text-[10px] text-neutral-500 mt-1 font-mono tracking-widest">
-            ESSAYS
+          <p className="font-mono text-2xl font-bold text-white/60 group-hover:text-white/90 transition-colors">
+            {essays.length}
+          </p>
+          <p className="text-[9px] text-white/20 mt-2 font-mono tracking-[0.3em] uppercase">
+            Essays
           </p>
         </Link>
         <Link
           href="/now"
-          className="border border-neutral-800 rounded-lg p-6 text-center hover:border-neutral-600 transition-colors"
+          className="group border border-white/[0.06] rounded-xl p-6 text-center hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-500"
         >
-          <p className="font-mono text-2xl font-bold">◉</p>
-          <p className="text-[10px] text-neutral-500 mt-1 font-mono tracking-widest">
-            NOW
+          <p className="font-mono text-2xl font-bold text-green-400/60 group-hover:text-green-400 transition-colors">
+            ◉
+          </p>
+          <p className="text-[9px] text-white/20 mt-2 font-mono tracking-[0.3em] uppercase">
+            Now
           </p>
         </Link>
       </section>
+
     </div>
   );
 }

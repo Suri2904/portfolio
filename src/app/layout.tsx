@@ -10,8 +10,12 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: 'Suryansh Chandel',
+  title: 'Suryansh Chandel — Builder',
   description: 'I notice broken systems and build things to fix them.',
+  openGraph: {
+    title: 'Suryansh Chandel — Builder',
+    description: 'I notice broken systems and build things to fix them.',
+  },
 };
 
 export default function RootLayout({
@@ -21,9 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col">
+      <body className="font-sans min-h-screen flex flex-col grain">
         <Navbar />
-        <main className="max-w-3xl mx-auto px-6 py-24 flex-grow w-full">
+        <main className="max-w-2xl mx-auto px-6 py-32 flex-grow w-full relative z-10">
           {children}
         </main>
         <Footer />
