@@ -38,13 +38,14 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="grid-backdrop border-b border-[var(--border-hairline)] px-5 pb-20 pt-20 sm:px-8 sm:pt-28">
+      <section className="relative overflow-hidden border-b border-[var(--border-hairline)] px-5 pb-20 pt-20 sm:px-8 sm:pt-28">
+        <div className="grid-backdrop pointer-events-none absolute inset-0" aria-hidden="true" />
         <motion.div
           initial="hidden"
           animate="show"
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="mx-auto max-w-3xl text-center"
+          className="relative mx-auto max-w-3xl text-center"
         >
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--border-hairline)] bg-[var(--surface-1)] px-3.5 py-1.5 text-xs text-[var(--ink-secondary)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-strong)]" />
