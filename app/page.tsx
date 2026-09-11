@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 const LINKS = {
   github: "https://github.com/Suri2904",
   strataRepo: "https://github.com/Suri2904/strata",
-  // No live deploy URL yet — update once Strata is connected to Vercel.
-  strataLive: undefined as string | undefined,
+  strataLive: "https://strata-flax-theta.vercel.app/" as string | undefined,
 };
 
 const fadeUp = {
