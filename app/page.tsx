@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const LINKS = {
   github: "https://github.com/Suri2904",
   strataRepo: "https://github.com/Suri2904/strata",
-  strataLive: "https://strata-flax-theta.vercel.app/" as string | undefined,
+  strataLive: "https://strata-woad-kappa.vercel.app/" as string | undefined,
 };
 
 const fadeUp = {
